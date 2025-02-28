@@ -11,7 +11,6 @@
     text-align: center;
 }
 
-/* Container Styling */
 .container {
     max-width: 1200px;
     margin: 20px auto;
@@ -28,13 +27,11 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
-/* Headings */
 h1 {
     color: #333;
     margin-bottom: 20px;
 }
 
-/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -52,7 +49,6 @@ th {
     color: white;
 }
 
-/* Product Grid */
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -77,7 +73,6 @@ th {
     object-fit: contain;
 }
 
-/* Buttons */
 button, .continue-shopping {
     background-color: #28a745;
     color: white;
@@ -93,8 +88,18 @@ button, .continue-shopping {
 button:hover, .continue-shopping:hover {
     background-color: #218838;
 }
+.quantity-btn {
+     padding: 5px 10px;
+     cursor: pointer;
+     background-color: #218838;
+      color: white;
+      border: none;
+      border-radius: 5px;
+}
+.quantity-btn:hover {
+     background-color: #218838;
+        }
 
-/* Cart Button */
 .cart-button {
     position: fixed;
     top: 20px;
@@ -117,7 +122,6 @@ button:hover, .continue-shopping:hover {
     right: -5px;
 }
 
-/* Cart Item Image */
 .cart-item img {
     width: 50px;
     height: 50px;
@@ -171,17 +175,29 @@ button:hover, .continue-shopping:hover {
             cart.forEach((item, index) => {
                 let row = cartTable.insertRow();
                 row.innerHTML = `
-                    <td class="cart-item"><img src="${item.img}" alt="${item.name}"> ${item.name}</td>
+                     <td class="cart-item"><img src="${item.img}" alt="${item.name}" width="50"> ${item.name}</td>
                     <td>₹${item.price}</td>
-                    <td>${item.quantity}</td>
+                    <td>
+                        <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                    </td>
                     <td><button onclick="removeFromCart(${index})">Remove</button></td>
                 `;
-                totalPrice += parseInt(item.price);
+                totalPrice += item.price * item.quantity;
             });
 
             document.getElementById("total-price").innerText = "Total Price: ₹" + totalPrice;
         }
-
+         function updateQuantity(index, change) {
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            cart[index].quantity += change;
+            if (cart[index].quantity < 1) {
+                cart.splice(index, 1);
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
         function removeFromCart(index) {
             let cart = JSON.parse(localStorage.getItem("cart"));
             cart.splice(index, 1);
