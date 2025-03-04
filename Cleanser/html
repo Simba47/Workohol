@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+       
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0px;
+            justify-content: center;
+        }
+        .product {
+            background-color: #fff;
+            border: 1px solid #fff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .product img {      
+            width: 200px;
+            height: 150px;
+            object-fit: scale-down;
+            
+        }
+        .product h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            font-family:"Monaspace";
+            color: #151212b5;
+            
+        }
+        .product p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .product button {
+            
+            background-color: white;
+            color: #0dc839;
+            border: 2px solid #28a745;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .product button:hover {
+            background-color:  #28a745;
+            color: black;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Our Products</h1>
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="C1.png" alt="Product 1">
+                <h2>Neutrogena Deep Clean Facial Cleanser for Normal to Oily skin-50 ml</h2>
+                <p>₹241</p>
+                <button>ADD TO CART</button>
+            </div>
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="C2.jpg" alt="Product 2">
+                <h2>Dot and Key Vitamin C + E Super Bright Gel Face Wash-175 ml </h2>
+                <p>₹311</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="C3.jpg" alt="Product 3">
+                <h2>Simple Kind To Skin Refreshing Facial Wash 100 ml</h2>
+                <p>₹248</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- Product 4 -->
+            <div class="product">
+                <img src="C4.jpg" alt="Product 4">
+                <h2>Cetaphil Oily Skin Cleanser For Combination To Oily Sensitive Skin-125 ml</h2>
+                <p>₹557</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C5.jpg" alt="Product 5">
+                <h2>Gentle Cleanser with Avacado & 5 Essential Ceramides - 100 ml</h2>
+                <p>₹287</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C6.jpg" alt="Product 6">
+                <h2>Aiken Prebotic Facial Cleanser Hydra Plus with rice water & BX premium Biotics Strengthen Skin Barrier</h2>
+                <p>₹330</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C7.jpg" alt="Product 7">
+                <h2>Avon Naturals Rose & Pearl Cleanser-100 gm</h2>
+                <p>₹346</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C8.jpg" alt="Product 8">
+                <h2>Ren Clean skincare Perfect Canvas Clean Jelly Oil Cleanser - 100 ml</h2>
+                <p>₹586</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C9.jpg" alt="Product 9">
+                <h2>Acne Repair Gentle Micro Cleanser 150 ml</h2>
+                <p>₹420</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C10.jpg" alt="Product 10">
+                <h2>Loreal Paris Glycolic Bright Daily Foaming Facial Cleanser, 50 ml</h2>
+                <p>₹460</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C11.jpg" alt="Product 11">
+                <h2>Gariner Bright Complete Vitmain C Gel Gentle Cleanser| For Instant Brighter Skin Face Wash 100 gm</h2>
+                <p>₹613</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C12.jpg" alt="Product 12">
+                <h2>Saffron & Papaya glow Bright Face Wash enhances glow, brightens skin with vitamin B5 & glycerin</h2>
+                <p>₹261</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
