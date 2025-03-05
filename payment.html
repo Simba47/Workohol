@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            color: #0F1111;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #0F1111;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .total-cost {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0F1111;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #0F1111;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #0F1111;
+            background-color: #fff;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #00ff51;
+            box-shadow: 0 0 5px rgba(9, 161, 68, 0.5);
+            outline: none;
+        }
+
+        .address-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .address-section .form-group {
+            flex: 1 1 calc(50% - 15px); 
+        }
+
+        .address-section .form-group.full-width {
+            flex: 1 1 100%; 
+        }
+
+        .save-address {
+            margin-bottom: 20px;
+        }
+
+        .save-address label {
+            font-weight: normal;
+            color: #0F1111;
+        }
+
+        .payment-method {
+            margin-bottom: 20px;
+            opacity: 0.5; 
+            pointer-events: none; 
+        }
+
+        .payment-method.enabled {
+            opacity: 1; 
+            pointer-events: auto; 
+        }
+
+        .payment-method label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #0F1111;
+        }
+
+        .payment-method input {
+            margin-right: 10px;
+        }
+
+        .payment-details {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .payment-details.active {
+            display: block;
+        }
+
+        .confirm-btn {
+            background-color: #218838;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .confirm-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+
+        }
+
+        .confirm-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #232F3E;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        .notification.active {
+            display: block;
+        }
+
+        .payment-method-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .payment-method-option label {
+            margin-left: 10px;
+            font-weight: normal;
+            color: #0F1111;
+        }
+
+        .payment-method-option input {
+            margin: 0;
+        }
+        .upi-details {
+        margin-top: 10px;
+    }
+
+    .upi-details input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #0F1111;
+        background-color: #fff;
+    }
+
+    .upi-details input:focus {
+        border-color: #FF9900;
+        box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
+        outline: none;
+    }
+
+    .upi-format {
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+    }
+    
+
+    .verify-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .verify-btn:hover {
+        background-color: #218838;
+        transform: scale(1.05);
+
+    }
+    button, .continue-shopping {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.continue-shopping:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment</h1>
+        <div class="total-cost" id="total-price"></div>
+
+        <!-- Address Section -->
+         <div>
+            <h1>Shipping address</h1>
+         </div>
+        <div class="address-section">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" placeholder="Enter your mobile number" required>
+            </div>
+            <div class="form-group">
+                <label for="pincode">Pincode</label>
+                <input type="text" id="pincode" placeholder="Enter your pincode" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="Enter your city" required>
+            </div>
+            <div class="form-group full-width">
+                <label for="address-line-1">Address Line</label>
+                <input type="text" id="address-line-1" placeholder="Enter your address line " required>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" placeholder="Enter your state" required>
+            </div>
+            <div class="save-address full-width">
+                <input type="checkbox" id="save-address">
+                <label for="save-address">Save this address for future use</label>
+            </div>
+        </div>
+        <button id="confirm-address-btn" class="confirm-btn">Confirm Address</button>
+
+        <!-- Payment Method Section -->
+        <div class="payment-method" id="payment-method-section">
+            <label>Payment Method</label>
+            <div class="payment-method-option">
+                <input type="radio" name="payment" id="upi" value="UPI" checked>
+                <label for="upi">UPI (GPay, PhonePe, Paytm)</label>
+                <div class="upi-details" id="upi-details">
+                    <input type="text" id="upi-id" placeholder="Please enter your UPI ID">
+                    <div class="upi-format">The UPI ID is in the format of name/phone number@bankname</div>
+                    <button class="verify-btn" onclick="verifyUPI()">Verify UPI ID</button>
+                </div>
+            </div>
+           
+            <div class="payment-method-option">
+                <input type="radio" name="payment" id="credit-card" value="Credit Card">
+                <label for="credit-card">Credit Card</label>
+                <div class="payment-details" id="credit-card-details">
+                    <input type="text" placeholder="Card Number" required>
+                    <input type="text" placeholder="Expiry Date" required>
+                    <input type="text" placeholder="CVV" required>
+                </div>
+            </div>
+            <div class="payment-method-option">
+                <input type="radio" name="payment" id="paypal" value="PayPal">
+                <label for="paypal">PayPal</label>
+            </div>
+            <div class="payment-method-option">
+                <input type="radio" name="payment" id="cod" value="Cash on Delivery">
+                <label for="cod">Cash on Delivery</label>
+            </div>
+        </div>
+
+        <!-- Proceed to Payment Button -->
+        <button id="proceed-to-payment-btn" class="confirm-btn" disabled>Proceed to Payment</button>
+    </div>
+
+    <div class="notification" id="notification">
+        Payment confirmed! Redirecting to payment gateway...
+    </div>
+
+    <script>
+        // Load total price from cart
+        document.addEventListener("DOMContentLoaded", function () {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+            document.getElementById("total-price").innerText = `Total Price: ₹${totalPrice}`;
+        });
+
+        // Confirm Address Button Logic
+        document.getElementById("confirm-address-btn").addEventListener("click", function () {
+            let fullName = document.getElementById("full-name").value;
+            let mobile = document.getElementById("mobile").value;
+            let pincode = document.getElementById("pincode").value;
+            let addressLine1 = document.getElementById("address-line-1").value;
+            let city = document.getElementById("city").value;
+            let state = document.getElementById("state").value;
+
+            if (!fullName || !mobile || !pincode || !addressLine1 || !city || !state) {
+                alert("Please fill in all required address fields.");
+                return;
+            }
+
+            // Enable Payment Method Section
+            document.getElementById("payment-method-section").classList.add("enabled");
+            document.getElementById("proceed-to-payment-btn").disabled = false;
+            alert("Address confirmed! You can now select a payment method.");
+        });
+
+        // Verify UPI ID
+        function verifyUPI() {
+            let upiId = document.getElementById("upi-id").value;
+            let upiRegex = /^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/;
+
+            if (!upiRegex.test(upiId)) {
+                alert("Invalid UPI ID. Please enter a valid UPI ID in the format name/phone number@bankname.");
+                return;
+            }
+
+            alert("UPI ID verified! A payment request has been sent to your UPI ID.");
+        }
+
+        // Proceed to Payment Button Logic
+        document.getElementById("proceed-to-payment-btn").addEventListener("click", function () {
+            let paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+
+            if (paymentMethod === "UPI") {
+                let upiId = document.getElementById("upi-id").value;
+                if (!upiId) {
+                    alert("Please enter and verify your UPI ID.");
+                    return;
+                }
+            }
+
+            // Show notification
+            let notification = document.getElementById("notification");
+            notification.classList.add("active");
+
+            // Redirect to payment gateway after 2 seconds
+            setTimeout(() => {
+                if (paymentMethod === "UPI") {
+                    alert("Payment request sent to your UPI ID. Please complete the payment in your UPI app.");
+                } else if (paymentMethod === "Credit Card") {
+                    window.location.href = "__";
+                } else if (paymentMethod === "PayPal") {
+                    window.location.href = "__";
+                } else if (paymentMethod === "Cash on Delivery") {
+                    alert("Order placed successfully! You will pay on delivery.");
+                    window.location.href = "Moisturizer.html";
+                }
+            }, 2000);
+        });
+    </script>
+    <div>    
+         <a href="Moisturizer.html" class="continue-shopping">Continue Shopping</a>
+
+
+    </div>
+</body>
+</html>
