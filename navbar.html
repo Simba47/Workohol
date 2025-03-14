@@ -1,0 +1,50 @@
+<!-- navbar.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Navbar</title>
+        <link rel="stylesheet" href="home.css">
+        <link rel="tylesheet" href="navbar.css">
+    </head>
+<body>
+<!-- Navbar -->
+<div class="navbar" id="navbar">
+<div class="logo">DERMA CURE</div>
+        
+<div class="nav-links">
+    <a href="Home.html">Home</a>
+    <a href="#">Shop</a>
+    <!--categories dropdown-->
+    <div class="dropdown">
+        <a href="categories.html" class="dropbtn">Categories</a>
+        <div class="dropdown-content">
+            <a href="SunScreen.html">SunScreen</a>
+            <a href="Cleanser.html">Cleanser</a>
+            <a href="Serum.html">Serum</a>
+            <a href="Moisturizers.html">Moisturizers</a>
+            <a href="Kits & Combos.html">Kits & Combos</a>
+        </div>
+    </div>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+</div>
+
+<div class="search-bar">
+    <input type="text" placeholder="Search products..." id="search-input">
+    <button onclick="searchProducts()">🔍</button>
+</div>
+
+<div class="nav-buttons">
+    <button class="book-appointment" onclick="location.href='appointment.html'">Book Appointment</button>
+     <div class="cart-icon" onclick="location.href='cart.html'">
+        View cart🛒
+        <span id="cart-count" class="cart-count">0</span>
+    </div>
+</div>
+
+<script src="home.js"></script>
+<script src="navbar.js"></script>
+</body>
+</html>
