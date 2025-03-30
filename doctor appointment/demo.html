@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinSync - Book a Dermatologist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fa;
+    background: linear-gradient(135deg, #ccecee 50%, #e9aed5 100%);
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #ccecee 50%, #ccecee 100%);
+    border-bottom: 1px solid #eee;
+}
+
+header h1 {
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.3em;
+    color: #555;
+}
+
+.cta-btn {
+    background: #e91e63;
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.2em;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.cta-btn:hover {
+    background: #e91e63;
+    transform: scale(1.05);
+}
+
+.cta-btn.small {
+    padding: 10px 20px;
+    font-size: 1em;
+}
+
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2.2em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+/* How It Works */
+#how-it-works {
+    background: #fff;
+    margin-bottom: 10px;
+
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.step-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #e91e63;
+    color: #fff;
+    border-radius: 50%;
+    line-height: 40px;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.step h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.step p {
+    color: #666;
+}
+
+/* Skin Quiz */
+#skin-quiz {
+    background: linear-gradient(135deg, #fff 60%, #fff7f0 100%);
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+}
+
+#skin-quiz::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 98, 0, 0.1);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+#skin-quiz h2 {
+    font-size: 2.5em;
+    color: #e91e63;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 1;
+}
+
+#quiz-form {
+    position: relative;
+    z-index: 1;
+}
+
+.quiz-question {
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+}
+
+.quiz-question:hover {
+    transform: translateY(-3px);
+}
+
+.quiz-question label {
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: block;
+    color: #333;
+}
+
+.quiz-question select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e91e63;
+    border-radius: 8px;
+    font-size: 1.1em;
+    background: #fff;
+    color: #333;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23ff6200" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.quiz-question select:focus {
+    outline: none;
+    border-color: #e91e63;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #f9f9f9;
+    border-radius: 25px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group input[type="radio"]:checked + span {
+    background: #e91e63;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.radio-group label span {
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.frequency-section {
+    background: linear-gradient(135deg, #fff7f0 0%, #fff 100%);
+    border: 2px dashed #e91e63;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: none;
+}
+
+.frequency-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.freq-btn {
+    padding: 12px 25px;
+    background: #fff;
+    border: 2px solid #e91e63;
+    border-radius: 30px;
+    font-size: 1em;
+    font-weight: 500;
+    color: #e91e63;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.freq-btn:hover {
+    background: #e91e63;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.freq-btn.selected {
+    background: #e91e63;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(255, 98, 0, 0.3);
+}
+
+/* Doctors */
+#doctors {
+    background: #f0f7f7;
+    margin-bottom: 10px;
+
+}
+
+.doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.doctor-card {
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+}
+
+.doctor-card img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.doctor-card h3 {
+    font-size: 1.4em;
+}
+
+.doctor-card p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Booking */
+#booking {
+    background: #fff;
+    margin-bottom: 10px;
+
+}
+
+.booking-options {
+    text-align: center;
+}
+
+.mode-toggle button {
+    padding: 12px 25px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.mode-toggle button.active {
+    background: #e91e63;
+    color: #fff;
+    border-color: #e91e63;
+}
+
+.time-slots {
+    margin: 25px 0;
+}
+
+.slot {
+    padding: 12px 25px;
+    border: 1px solid #ddd;
+    background: #fff;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.slot.selected {
+    background: #e91e63;
+    color: #fff;
+    border-color: #e91e63;
+}
+
+#booking-form input {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    margin: 15px auto;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Why Choose */
+#why-choose {
+    background: #f0f7f7;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+.benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.benefit {
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.benefit strong {
+    color: #e91e63;
+}
+
+/* Testimonials */
+#testimonials {
+    background: #fff;
+    margin-bottom: 10px;
+
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.testimonial p {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial span {
+    color: #666;
+}
+
+/* Skin Plan Pop-Up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #e91e63;
+}
+
+#skin-plan-details {
+    margin: 20px 0;
+}
+
+#skin-plan-details h3 {
+    font-size: 1.5em;
+    color: #e91e63;
+    margin-bottom: 15px;
+}
+
+#skin-plan-details p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#skin-plan-details .product-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#skin-plan-details .product-item:last-child {
+    border-bottom: none;
+}
+
+#skin-plan-details .product-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#skin-plan-details .product-item .product-info {
+    text-align: left;
+}
+
+#skin-plan-details .product-item .product-info h4 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+#skin-plan-details .product-item .product-info p {
+    font-size: 0.9em;
+    color: #777;
+    margin: 0;
+}
+
+.popup-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Cart Page */
+#cart {
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+#cart-details .product-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#cart-details .product-item:last-child {
+    border-bottom: none;
+}
+
+#cart-details .product-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#cart-details .product-item .product-info {
+    text-align: left;
+}
+
+#cart-details .product-item .product-info h4 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+#cart-details .product-item .product-info p {
+    font-size: 0.9em;
+    color: #777;
+    margin: 0;
+}
+
+.cart-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+
+/* Floating Button */
+.floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.floating-main-btn {
+    background: #e91e63;
+    color: #fff;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.floating-main-btn:hover {
+    background: #e91e63;
+    transform: rotate(90deg);
+}
+
+.floating-options {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.floating-btn:hover .floating-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.floating-option-btn {
+    background: #fff;
+    color: #e91e63;
+    border: 2px solid #e91e63;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.floating-option-btn:hover {
+    background: #e91e63;
+    color: #fff;
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+        <!-- Floating Button -->
+        <div class="floating-btn">
+            <button class="floating-main-btn">☰</button>
+            <div class="floating-options">
+                <button class="floating-option-btn" onclick="window.location.href='index.html'">Continue Shopping</button>
+                <button class="floating-option-btn" onclick="window.location.href='cart.html'">Cart</button>
+            </div>
+        </div>
+
+    <!-- Header -->
+    <header>
+        <h1>Get Clear, Healthy Skin</h1>
+        <p>Personalized Skincare Starts Here – Consult a Dermatologist Today</p>
+        <button class="cta-btn" onclick="scrollToQuiz()">Book Your Free Consultation</button>
+    </header>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <span class="step-number">1</span>
+                <h3>Take the Skin Quiz</h3>
+                <p>Answer a few questions about your skin.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <h3>Consult a Dermatologist</h3>
+                <p>Book a free 1:1 video or chat session.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <h3>Get Your Custom Plan</h3>
+                <p>Receive a tailored skincare routine.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skin Quiz -->
+    <section id="skin-quiz">
+        <h2>Let’s Decode Your Skin</h2>
+        <form id="quiz-form">
+            <div class="quiz-question">
+                <label>What’s your primary skin concern?</label>
+                <select name="concern" required>
+                    <option value="">Select</option>
+                    <option value="acne">Acne</option>
+                    <option value="pigmentation">Pigmentation</option>
+                    <option value="dryness">Dryness</option>
+                    <option value="aging">Aging</option>
+                </select>
+            </div>
+            <div class="quiz-question">
+                <label>How would you describe your skin type?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="skin-type" value="oily" required><span>Oily</span></label>
+                    <label><input type="radio" name="skin-type" value="dry"><span>Dry</span></label>
+                    <label><input type="radio" name="skin-type" value="combination"><span>Combination</span></label>
+                    <label><input type="radio" name="skin-type" value="normal"><span>Normal</span></label>
+                </div>
+            </div>
+            <div class="quiz-question frequency-section">
+                <label>How often do you experience skin issues?</label>
+                <div class="frequency-buttons">
+                    <button type="button" class="freq-btn" data-value="rarely" onclick="selectFrequency(this)">Rarely</button>
+                    <button type="button" class="freq-btn" data-value="weekly" onclick="selectFrequency(this)">Weekly</button>
+                    <button type="button" class="freq-btn" data-value="often" onclick="selectFrequency(this)">Often</button>
+                    <button type="button" class="freq-btn" data-value="daily" onclick="selectFrequency(this)">Daily</button>
+                    <input type="hidden" name="frequency" id="frequency-input" value="weekly">
+                </div>
+            </div>
+            <button type="submit" class="cta-btn">Get My Skin Plan</button>
+        </form>
+    </section>
+
+    <!-- Meet Our Dermatologists -->
+    <section id="doctors">
+        <h2>Meet Our Dermatologists</h2>
+        <div class="doctor-grid">
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/150" alt="Dr. Priya">
+                <h3>Dr. Priya Sharma</h3>
+                <p>Acne & Pigmentation Expert</p>
+                <button class="cta-btn small" onclick="scrollToBooking()">Book Now</button>
+            </div>
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/150" alt="Dr. Anil">
+                <h3>Dr. Anil Gupta</h3>
+                <p>Aging & Texture Specialist</p>
+                <button class="cta-btn small" onclick="scrollToBooking()">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking -->
+    <section id="booking">
+        <h2>Pick a Time</h2>
+        <div class="booking-options">
+            <div class="mode-toggle">
+                <button class="active" onclick="toggleMode('video')">Video Call</button>
+                <button onclick="toggleMode('chat')">Chat</button>
+            </div>
+            <div class="time-slots">
+                <button class="slot" onclick="selectSlot(this)">10:00 AM</button>
+                <button class="slot" onclick="selectSlot(this)">2:00 PM</button>
+                <button class="slot" onclick="selectSlot(this)">6:00 PM</button>
+            </div>
+            <form id="booking-form">
+                <input type="text" placeholder="Name" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <button type="submit" class="cta-btn">Confirm Appointment</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Why Choose SkinSync -->
+    <section id="why-choose">
+        <h2>Why Choose Cellestial Moonlight?</h2>
+        <div class="benefits">
+            <div class="benefit"><strong>Expert-Led</strong> – Top dermatologists at your fingertips.</div>
+            <div class="benefit"><strong>Custom Solutions</strong> – Plans made just for you.</div>
+            <div class="benefit"><strong>Science-Backed</strong> – Proven ingredients, no hype.</div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <h2>Real Skin, Real Results</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"My acne cleared up in 3 weeks!"</p>
+                <span>Priya, 28</span>
+            </div>
+            <div class="testimonial">
+                <p>"Finally, a routine that works for my dry skin."</p>
+                <span>Rahul, 34</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skin Plan Pop-Up -->
+    <div id="skin-plan-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h2>Your Personalized Skin Plan</h2>
+            <div id="skin-plan-details">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+            <div class="popup-actions">
+                <button class="cta-btn" onclick="addToCart()">Add to Cart</button>
+                <button class="cta-btn" onclick="scrollToBooking()">Book a Consultation</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Product data (replace with your actual data)
+const products = {
+    acne: [
+        { name: "SkinSync Clarifying Cleanser", price: 15, description: "Clears pores and reduces oil with 2% salicylic acid.", image: "a1.png" },
+        { name: "Acne-Control Serum with Salicylic Acid", price: 25, description: "Targets breakouts and prevents future acne.", image: "b1.png" },
+        { name: "Light Hydrating Moisturizer", price: 20, description: "Non-greasy hydration for acne-prone skin.", image: "c1.jpg" }
+    ],
+    pigmentation: [
+        { name: "Gentle Exfoliating Cleanser", price: 18, description: "Removes dead skin cells to reveal brighter skin.", image: "C2.jpg" },
+        { name: "Vitamin C Brightening Serum", price: 30, description: "Reduces dark spots with 20% Vitamin C.", image: "E1.jpg" },
+        { name: "Hydrating Day Cream", price: 22, description: "Locks in moisture with SPF 15.", image: "a3.png" }
+    ],
+    dryness: [
+        { name: "Creamy Hydrating Cleanser", price: 16, description: "Gently cleanses without stripping moisture.", image: "b10.png" },
+        { name: "Hyaluronic Acid Serum", price: 28, description: "Boosts hydration for plump, dewy skin.", image: "a11.png" },
+        { name: "Rich Nourishing Cream", price: 25, description: "Deeply moisturizes for long-lasting comfort.", image: "E8.jpg" }
+    ],
+    aging: [
+        { name: "Gentle Exfoliating Cleanser", price: 18, description: "Removes dead skin cells to reveal brighter skin.", image: "C3.jpg" },
+        { name: "Retinol Night Serum", price: 35, description: "Reduces fine lines with 0.5% retinol.", image: "a4.png" },
+        { name: "Anti-Aging Day Cream", price: 30, description: "Firms and hydrates with peptides.", image: "E5.jpg" }
+    ]
+};
+
+// Scroll functions
+function scrollToQuiz() {
+    document.getElementById('skin-quiz').scrollIntoView({ behavior: 'smooth' });
+}
+
+function scrollToBooking() {
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    closePopup();
+}
+
+// Select frequency button
+function selectFrequency(button) {
+    const buttons = document.querySelectorAll('.freq-btn');
+    buttons.forEach(btn => btn.classList.remove('selected'));
+    button.classList.add('selected');
+    document.getElementById('frequency-input').value = button.getAttribute('data-value');
+}
+
+// Handle quiz form submission
+document.getElementById('quiz-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Clear previous cart data to avoid stale data
+    localStorage.removeItem('skinPlan');
+    localStorage.removeItem('cart');
+
+    // Get quiz data
+    const formData = new FormData(this);
+    const concern = formData.get('concern');
+    const skinType = formData.get('skin-type');
+    const frequency = formData.get('frequency');
+
+    // Generate skin plan based on answers
+    let planDetails = '';
+    let planName = '';
+    let totalPrice = 0;
+    let bundlePrice = 0;
+    const selectedProducts = products[concern];
+
+    if (concern === 'acne') {
+        planName = 'Acne Control';
+    } else if (concern === 'pigmentation') {
+        planName = 'Brightening Boost';
+    } else if (concern === 'dryness') {
+        planName = 'Hydration Restore';
+    } else if (concern === 'aging') {
+        planName = 'Age Defense';
+    }
+
+    // Calculate total and bundle price
+    totalPrice = selectedProducts.reduce((sum, product) => sum + product.price, 0);
+    bundlePrice = Math.round(totalPrice * 0.9); // 10% discount for bundle
+
+    // Build product list with images and details for the pop-up
+    let productList = selectedProducts.map(product => `
+       .Concurrent
+
+        <div class="product-item">
+            <img src="${product.image}" alt="${product.name}">
+            <div class="product-info">
+                <h4>${product.name} (₹${product.price})</h4>
+                <p>${product.description}</p>
+            </div>
+        </div>
+    `).join('');
+
+    planDetails = `
+        <h3>Your Skin Plan: ${planName}</h3>
+        <p>Based on your ${skinType} skin and ${frequency} ${concern} issues, here’s your custom plan:</p>
+        ${productList}
+        <p>Total: ₹${totalPrice} (or ₹${bundlePrice} bundled)</p>
+    `;
+
+    // Show pop-up with plan
+    document.getElementById('skin-plan-details').innerHTML = planDetails;
+    document.getElementById('skin-plan-popup').style.display = 'flex';
+
+    // Prepare cart data in the format expected by the new cart page
+    const cartItems = selectedProducts.map(product => ({
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: 1 // Default quantity
+    }));
+
+    // Store cart data for the new cart page
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
+    // Store additional skin plan details for reference (optional)
+    localStorage.setItem('skinPlan', JSON.stringify({
+        planName: planName,
+        skinType: skinType,
+        frequency: frequency,
+        concern: concern,
+        totalPrice: totalPrice,
+        bundlePrice: bundlePrice
+    }));
+});
+
+// Add to Cart and redirect
+function addToCart() {
+    window.location.href = 'cart.html';
+}
+
+// Close pop-up
+function closePopup() {
+    document.getElementById('skin-plan-popup').style.display = 'none';
+}
+
+// Toggle consultation mode
+function toggleMode(mode) {
+    const buttons = document.querySelectorAll('.mode-toggle button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+// Select time slot
+function selectSlot(slot) {
+    const slots = document.querySelectorAll('.slot');
+    slots.forEach(s => s.classList.remove('selected'));
+    slot.classList.add('selected');
+}
+
+// Handle booking form submission
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Appointment confirmed! Check your phone for details.');
+    this.reset();
+    document.querySelector('.slot.selected')?.classList.remove('selected');
+});
+    </script>
+</body>
+</html>
