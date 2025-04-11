@@ -1,0 +1,215 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    background-color: #f5ece7;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  /* Header */
+  header {
+    background-color: #fff;
+    padding: 0.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  section {
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full-screen height */
+  }
+  
+  .section-content {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  section img {
+    width: 60%;
+    height: 450px;
+    object-fit: cover;
+  }
+  
+  .content {
+    width: 40%;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+  
+  p {
+    font-size: 0.95rem;
+  }
+  
+  /* Specific Section Adjustments */
+  .mission,
+  .philosophy,
+  .why,
+  .founder,
+  .rnd,
+  .note {
+    margin-top: 40px; /* Adjusted for smaller header */
+  }
+  
+  /* Apply dark background and white text to specified sections */
+  .mission,
+  .philosophy,
+  .why,
+  .founder,
+  .rnd {
+    background-color: #2e2a3d;
+    color: #fff;
+  }
+  
+  .mission h2,
+  .mission p,
+  .philosophy h2,
+  .philosophy p,
+  .why h2,
+  .why p,
+  .founder h2,
+  .founder p,
+  .rnd h2,
+  .rnd p {
+    color: #fff;
+  }
+  
+  .note .section-content {
+    justify-content: center;
+  }
+  
+  .note .content {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .note .signature {
+    font-family: "Brush Script MT", cursive;
+    font-size: 1.5rem;
+    color: #e07b39;
+    margin: 0.5rem 0;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #f5ece7;
+    padding: 1rem 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  footer h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  footer .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  footer .social-links a {
+    color: #333;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  footer .social-links a:hover {
+    color: #e07b39;
+  }
+  
+  footer .links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  footer .links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+  
+  footer .links a:hover {
+    color: #e07b39;
+  }
+  
+  footer .payment-methods img {
+    width: 30px;
+    margin: 0 0.3rem;
+  }
+  
+  footer .footer-bottom {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  footer .footer-bottom a {
+    color: #666;
+    text-decoration: none;
+  }
+  
+  footer .footer-bottom a:hover {
+    color: #e07b39;
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media (max-width: 768px) {
+    section {
+      min-height: auto;
+      padding: 1rem 0;
+    }
+  
+    .section-content {
+      flex-direction: column;
+      padding: 0 0.5rem;
+    }
+  
+    section img,
+    .content {
+      width: 100%;
+    }
+  
+    section img {
+      height: 350px;
+    }
+  
+    nav {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+  }
