@@ -27,7 +27,7 @@ def add_cleansers():
             name=product["name"],
             defaults={
                 "price": product["price"],
-                "category": "cleanser",  # Match your model's category choice
+                "category": "cleanser",  
                 "image": product["image"]
             }
         )

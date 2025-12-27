@@ -27,7 +27,7 @@ def add_serums():
             name=product["name"],
             defaults={
                 "price": product["price"],
-                "category": "serum",  # Match your model's category choice
+                "category": "serum",  
                 "image": product["image"]
             }
         )

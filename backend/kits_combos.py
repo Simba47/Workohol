@@ -27,7 +27,7 @@ def add_kits_combos():
             name=product["name"],
             defaults={
                 "price": product["price"],
-                "category": "kits_combos",  # Match your model's category choice
+                "category": "kits_combos",  
                 "image": product["image"]
             }
         )

@@ -28,7 +28,7 @@ def add_facewash():
             name=product["name"],
             defaults={
                 "price": product["price"],
-                "category": "facewash",  # Match your model's category choice
+                "category": "facewash",  
                 "image": product["image"]
             }
         )
